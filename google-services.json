@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "282147228560",
+    "firebase_url": "https://sacvoting.firebaseio.com",
+    "project_id": "sacvoting",
+    "storage_bucket": "sacvoting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282147228560:android:580b55043bde0c69a28115",
+        "android_client_info": {
+          "package_name": "com.example.SACvoting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282147228560-0g4tt45noaa098a9n9tqi9tj4sgapc9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7yVsb4U6uBed2HSVIfBRZWG-0rqYx3QE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282147228560-0g4tt45noaa098a9n9tqi9tj4sgapc9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
