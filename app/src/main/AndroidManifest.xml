@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
     <application
@@ -40,6 +41,14 @@
         <activity
             android:name="com.example.voters.Home"
             android:label="@string/home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.AdminHome"
+            android:label="@string/adminhome"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.AddCandidates"
+            android:label="@string/addcandidates"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

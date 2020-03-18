@@ -40,16 +40,16 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         super.onCreate(savedInstanceState);
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, Home.class));
-            finish();
-        }
+//        if (auth.getCurrentUser() != null) {
+//            startActivity(new Intent(LoginActivity.this, Home.class));
+//            finish();
+//        }
 
         // set the view now
         setContentView(R.layout.activity_login);
@@ -84,8 +84,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                final String email = inputEmail.getText().toString().trim();
+                final String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -115,10 +115,17 @@ public class LoginActivity extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
-                                } else {
-                                    Intent intent = new Intent(LoginActivity.this, Home.class);
-                                    startActivity(intent);
-                                    finish();
+                                }
+                                else {
+                                    if(email.equals("ngugikariukid@gmail.com")){
+                                        Intent intent = new Intent(LoginActivity.this, AdminHome.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }else {
+                                        Intent intent = new Intent(LoginActivity.this, Home.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
                             }
                         });

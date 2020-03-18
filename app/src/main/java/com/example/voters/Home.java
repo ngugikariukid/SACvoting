@@ -1,7 +1,9 @@
 package com.example.voters;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -26,7 +28,12 @@ public class Home extends AppCompatActivity {
         treasurer = (Button) findViewById(R.id.treasurer);
         secretary = (Button) findViewById(R.id.secretary);
 
-
+        president.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, ResetPasswordActivity.class));
+            }
+        });
     }
 
 }

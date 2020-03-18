@@ -46,4 +46,6 @@
     <string name="addCandidate">Add Candidate</string>
     <string name="viewvotes">View Votes</string>
     <string name="home">Home</string>
+    <string name="adminhome">Admin HomePage</string>
+    <string name="addcandidates">Add Candidates</string>
 </resources>

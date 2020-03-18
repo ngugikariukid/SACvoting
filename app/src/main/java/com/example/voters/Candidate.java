@@ -9,23 +9,23 @@ public class Candidate {
     public String CandidateEmail;
     public String firstname;
     public String lastname;
-    public String image;
+    //public String image;
     public String party;
-    public String categoryId;
-    public String totalVotes;
+    public String category;
+    public Integer totalVotes;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(Candidate.class)
     public Candidate() {
     }
 
-    public Candidate(String image, String CandidateEmail, String firstname, String lastname, String party, String categoryId, String totalVotes){
-        this.image = image;
+    public Candidate(String CandidateEmail, String firstname, String lastname, String party, String category, Integer totalVotes){
+        //this.image = image;
         this.CandidateEmail = CandidateEmail;
         this.firstname = firstname;
         this.lastname = lastname;
         this.party = party;
-        this.categoryId = categoryId;
+        this.category = category;
         this.totalVotes = totalVotes;
     }
 
