@@ -57,14 +57,23 @@ public class AddCandidates extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final String TAG = "AddCandidates";
 
-    // view for image view
+    private Button btnChoose;
     private ImageView imageView;
 
-    // Uri indicates, where the image will be picked from
+
+
     private Uri filePath;
 
-    // request code
-    private final int PICK_IMAGE_REQUEST = 22;
+    private final int PICK_IMAGE_REQUEST = 71;
+
+//    // view for image view
+//    private ImageView imageView;
+//
+//    // Uri indicates, where the image will be picked from
+//    private Uri filePath;
+//
+//    // request code
+//    private final int PICK_IMAGE_REQUEST = 22;
 
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
@@ -84,11 +93,16 @@ public class AddCandidates extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
+
+
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         btn_addCandidate = (Button) findViewById(R.id.btn_addCandidate);
         btn_back = (Button) findViewById(R.id.btn_back);
+
+        btnChoose = (Button) findViewById(R.id.btnChoose);
+        imageView = (ImageView) findViewById(R.id.imgView);
 
         firstname = (EditText) findViewById(R.id.firstname);
         lastname = (EditText) findViewById(R.id.lastname);
@@ -107,11 +121,18 @@ public class AddCandidates extends AppCompatActivity {
             }
         });
 
-        selectimage.setOnClickListener(new View.OnClickListener() {
+//        selectimage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                SelectImage();
+//            }
+//        });
+
+        btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                SelectImage();
+            public void onClick(View v) {
+                chooseImage();
             }
         });
 
@@ -153,97 +174,70 @@ public class AddCandidates extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
                 InsertCandidate(eemail,fname,lname,pparty,cat,initVotes);
+
                     startActivity(new Intent(AddCandidates.this, AdminHome.class));
             }
         });
 
     }
 
-    private void SelectImage()
-    {
 
-        // Defining Implicit Intent to mobile gallery
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(
-                Intent.createChooser(
-                        intent,
-                        "Select Image from here..."),
-                PICK_IMAGE_REQUEST);
+private void chooseImage() {
+    Intent intent = new Intent();
+    intent.setType("image/*");
+    intent.setAction(Intent.ACTION_GET_CONTENT);
+    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
+    private void uploadImage(String UserId) {
 
-    private void uploadImage()
-    {
-        if (filePath != null) {
-
-            // Code for showing progressDialog while uploading
-            final ProgressDialog progressDialog
-                    = new ProgressDialog(this);
+        if(filePath != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            // Defining the child of storageReference
-            StorageReference ref
-                    = storageReference
-                    .child(
-                            "images/"
-                                    + UUID.randomUUID().toString());
-
-            // adding listeners on upload
-            // or failure of image
+            StorageReference ref = storageReference.child("images/"+ UserId);
             ref.putFile(filePath)
-                    .addOnSuccessListener(
-                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
-
-                                @Override
-                                public void onSuccess(
-                                        UploadTask.TaskSnapshot taskSnapshot)
-                                {
-
-                                    // Image uploaded successfully
-                                    // Dismiss dialog
-                                    progressDialog.dismiss();
-                                    Toast
-                                            .makeText(AddCandidates.this,
-                                                    "Image Uploaded!!",
-                                                    Toast.LENGTH_SHORT)
-                                            .show();
-                                }
-                            })
-
-                    .addOnFailureListener(new OnFailureListener() {
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
-                        public void onFailure(@NonNull Exception e)
-                        {
-
-                            // Error, Image not uploaded
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            Toast
-                                    .makeText(AddCandidates.this,
-                                            "Failed " + e.getMessage(),
-                                            Toast.LENGTH_SHORT)
-                                    .show();
+                            Toast.makeText(AddCandidates.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    .addOnProgressListener(
-                            new OnProgressListener<UploadTask.TaskSnapshot>() {
-
-                                // Progress Listener for loading
-                                // percentage on the dialog box
-                                @Override
-                                public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot)
-                                {
-                                    double progress
-                                            = (100.0
-                                            * taskSnapshot.getBytesTransferred()
-                                            / taskSnapshot.getTotalByteCount());
-                                    progressDialog.setMessage(
-                                            "Uploaded "
-                                                    + (int)progress + "%");
-                                }
-                            });
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddCandidates.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
         }
     }
 
@@ -251,7 +245,7 @@ public class AddCandidates extends AppCompatActivity {
         String userId = mDatabase.push().getKey();
         Candidate newCandidate = new Candidate(CandidateEmail, firstname,lastname, party, category, totalVotes);
         mDatabase.child(userId).setValue(newCandidate);
-        uploadImage();
+        uploadImage(userId);
         Toast.makeText(getApplicationContext(), "Candidate added!", Toast.LENGTH_SHORT).show();
     }
 
