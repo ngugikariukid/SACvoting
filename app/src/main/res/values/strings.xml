@@ -48,4 +48,6 @@
     <string name="home">Home</string>
     <string name="adminhome">Admin HomePage</string>
     <string name="addcandidates">Add Candidates</string>
+    <string name="vote">Vote</string>
+    <string name="allcandidates">All Candidates</string>
 </resources>

@@ -50,6 +50,10 @@
             android:name="com.example.voters.AddCandidates"
             android:label="@string/addcandidates"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.AllCandidates"
+            android:label="@string/allcandidates"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 
