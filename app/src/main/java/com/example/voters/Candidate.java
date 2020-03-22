@@ -6,33 +6,14 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Candidate {
 
-    public String CandidateEmail;
-    public String firstname;
-    public String lastname;
-    public String party;
-    public String category;
-    public Integer totalVotes;
+    private String candidateemail;
 
-    // Default constructor required for calls to
-    // DataSnapshot.getValue(Candidate.class)
-    public Candidate() {
-    }
-    public Candidate(String CandidateEmail, String firstname, String lastname, String party, String category, Integer totalVotes) {
-
-        this.CandidateEmail = CandidateEmail;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.party = party;
-        this.category = category;
-        this.totalVotes = totalVotes;
+    public String getCandidateemail() {
+        return candidateemail;
     }
 
-    public String getCandidateEmail() {
-        return CandidateEmail;
-    }
-
-    public void setCandidateEmail(String candidateEmail) {
-        CandidateEmail = candidateEmail;
+    public void setCandidateemail(String candidateemail) {
+        this.candidateemail = candidateemail;
     }
 
     public String getFirstname() {
@@ -74,5 +55,27 @@ public class Candidate {
     public void setTotalVotes(Integer totalVotes) {
         this.totalVotes = totalVotes;
     }
+
+    private String firstname;
+    private String lastname;
+    private String party;
+    private String category;
+    private Integer totalVotes;
+
+    // Default constructor required for calls to
+    // DataSnapshot.getValue(Candidate.class)
+    public Candidate() {
+    }
+
+    public Candidate(String candidateemail, String firstname, String lastname, String party, String category, Integer totalVotes) {
+
+        this.candidateemail = candidateemail;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.party = party;
+        this.category = category;
+        this.totalVotes = totalVotes;
+    }
+
 
 }
