@@ -5,8 +5,29 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Candidate {
-
+    private String firstname;
+    private String lastname;
+    private String party;
+    private String category;
     private String candidateemail;
+    private String imageurl;
+    public Integer totalVotes;
+
+    // Default constructor required for calls to
+    // DataSnapshot.getValue(Candidate.class)
+    public Candidate() {
+    }
+
+    public Candidate(String imageurl, String candidateemail, String firstname, String lastname, String party, String category, Integer totalVotes) {
+
+        this.candidateemail = candidateemail;
+        this.imageurl = imageurl;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.party = party;
+        this.category = category;
+        this.totalVotes = totalVotes;
+    }
 
     public String getCandidateemail() {
         return candidateemail;
@@ -56,26 +77,11 @@ public class Candidate {
         this.totalVotes = totalVotes;
     }
 
-    private String firstname;
-    private String lastname;
-    private String party;
-    private String category;
-    private Integer totalVotes;
-
-    // Default constructor required for calls to
-    // DataSnapshot.getValue(Candidate.class)
-    public Candidate() {
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public Candidate(String candidateemail, String firstname, String lastname, String party, String category, Integer totalVotes) {
-
-        this.candidateemail = candidateemail;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.party = party;
-        this.category = category;
-        this.totalVotes = totalVotes;
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
-
-
 }

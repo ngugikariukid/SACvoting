@@ -6,20 +6,43 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Votes {
 
-    public String voteLogId;
-    public String VoterEmail;
-    public String categoryId;
-    public String CandidateEmail;
+    public String getVoteremail() {
+        return voteremail;
+    }
+
+    public void setVoteremail(String voteremail) {
+        this.voteremail = voteremail;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCandidateemail() {
+        return candidateemail;
+    }
+
+    public void setCandidateemail(String candidateemail) {
+        this.candidateemail = candidateemail;
+    }
+
+    public String voteremail;
+    public String category;
+    public String candidateemail;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(Votes.class)
     public Votes() {
     }
 
-    public Votes(String voteLogId, String VoterEmail, String categoryId, String candidateEmail) {
-        this.voteLogId = voteLogId;
-        this.VoterEmail = VoterEmail;
-        this.categoryId = categoryId;
-        this.CandidateEmail = candidateEmail;
+    public Votes(String voteremail, String category, String candidateemail) {
+
+        this.voteremail = voteremail;
+        this.category = category;
+        this.candidateemail = candidateemail;
     }
 }

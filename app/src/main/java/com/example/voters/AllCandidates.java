@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -24,6 +28,8 @@ public class AllCandidates extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Candidate> list;
     private MyAdapter adapter;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     private static final String TAG = "AllCandidates";
 
@@ -33,32 +39,31 @@ public class AllCandidates extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_candidates);
 
-        reference= FirebaseDatabase.getInstance().getReference().child("candidates");
+        //reference= FirebaseDatabase.getInstance().getReference().child("candidates");
         recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
-
-        //LinearLayoutManager manager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(manager);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Candidate>();
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference = FirebaseDatabase.getInstance().getReference();
+
+        Query presidentquery = reference.child("candidates").orderByChild("category").equalTo("President");
+        presidentquery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    Candidate p = dataSnapshot1.getValue(Candidate.class);
-                    list.add(p);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        Candidate p = dataSnapshot1.getValue(Candidate.class);
+                        String userId = dataSnapshot1.getKey();
+                        list.add(p);
+                    }
+                    adapter = new MyAdapter(AllCandidates.this, list);
+                    recyclerView.setAdapter(adapter);
                 }
-                adapter = new MyAdapter(AllCandidates.this, list);
-                recyclerView.setAdapter(adapter);
-
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(AllCandidates.this, "Ooops, something went wrong!", Toast.LENGTH_SHORT).show();
+            public void onCancelled(DatabaseError databaseError) {
             }
         });
-
         };
     }

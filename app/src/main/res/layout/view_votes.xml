@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.voters.Home">
+    tools:context="com.example.voters.ViewVotes">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -34,7 +34,7 @@
 
 
         <Button
-            android:id="@+id/president"
+            android:id="@+id/presidentresults"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/treasurer"
+            android:id="@+id/treasurerresults"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         <!-- Link to Login Screen -->
 
         <Button
-            android:id="@+id/secretary"
+            android:id="@+id/secretaryresults"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,6 +67,16 @@
             android:text="@string/sacsec"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:text="@string/btn_back"
+            android:textColor="@color/colorAccent" />
+
     </LinearLayout>
 
     <ProgressBar

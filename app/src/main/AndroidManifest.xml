@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
 
     <application
@@ -19,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.voters.LoginActivity"
+            android:name="com.example.voters.Join"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.voters.LoginActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.voters.MainActivity"
             android:label="@string/title_activity_profile"
@@ -48,12 +54,60 @@
             android:label="@string/adminhome"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.voters.AddCandidates"
+            android:name="com.example.voters.AddCandidate"
             android:label="@string/addcandidates"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.voters.AllCandidates"
             android:label="@string/allcandidates"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.TreasurerCandidates"
+            android:label="@string/treasurercandidates"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.SecretaryCandidates"
+            android:label="@string/secretarycandidates"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.ViewVotes"
+            android:label="@string/viewvots"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.VotesAdapter"
+            android:label="@string/votesadapter"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.PresidentResults"
+            android:label="@string/votesadapter"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.SecretaryResults"
+            android:label="@string/votesadapter"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.TreasurerResults"
+            android:label="@string/votesadapter"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.MainPage"
+            android:label="@string/home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.Vote"
+            android:label="@string/vote"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.Validate"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.FingerprintActivity"
+            android:label="@string/fingerprint"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.HomeActivity"
+            android:label="@string/validate"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

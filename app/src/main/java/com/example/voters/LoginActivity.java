@@ -111,12 +111,12 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }
                                 else {
-                                    if(email.equals("ngugikariukid@gmail.com")){
+                                    if(email.equals("eddiemwangi01@gmail.com")){
                                         Intent intent = new Intent(LoginActivity.this, AdminHome.class);
                                         startActivity(intent);
                                         finish();
                                     }else {
-                                        Intent intent = new Intent(LoginActivity.this, Home.class);
+                                        Intent intent = new Intent(LoginActivity.this, MainPage.class);
                                         startActivity(intent);
                                         finish();
                                     }

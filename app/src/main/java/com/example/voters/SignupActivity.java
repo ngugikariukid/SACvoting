@@ -62,8 +62,6 @@ public class SignupActivity extends AppCompatActivity {
                 final String email = inputEmail.getText().toString().trim();
                 final String password = inputPassword.getText().toString().trim();
 
-
-
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
@@ -94,7 +92,7 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    //writeNewUser(email,password);
+                                    writeNewUser(email,password);
                                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                                     finish();
                                 }
@@ -107,6 +105,7 @@ public class SignupActivity extends AppCompatActivity {
     private void writeNewUser(String email, String password) {
         String userId = mDatabase.push().getKey();
         Voters voter = new Voters(email, password);
+
         mDatabase.child(userId).setValue(voter);
         Toast.makeText(getApplicationContext(), "Record added!", Toast.LENGTH_SHORT).show();
     }

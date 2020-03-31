@@ -50,4 +50,26 @@
     <string name="addcandidates">Add Candidates</string>
     <string name="vote">Vote</string>
     <string name="allcandidates">All Candidates</string>
+    <string name="treasurercandidates">Treasurers</string>
+    <string name="secretarycandidates">Secretaries</string>
+    <string name="viewvots">View Votes</string>
+    <string name="votesadapter">View Votes</string>
+    <string name="logout">Logout</string>
+    <string name="voting">Vote</string>
+    <string name="validate">Validate</string>
+    <string name="fingerprint">FingerPrint Activity</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_fingerprint">One-touch to Vote</string>
+    <string name="desc_fingerprint">Please place your fingertip on the scanner to verify your identity</string>
+    <string name="note">(Fingerprint sign in makes your voting much faster and safer. </string>
+    <string name="title_activity_home">Fingerprint</string>
+    <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
+    <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
+    <string name="register">Register</string>
+    <string name="dialog_fire_missiles">String</string>
+    <string name="fire">fire</string>
+    <string name="cancel">Cancel</string>
+
+
 </resources>
