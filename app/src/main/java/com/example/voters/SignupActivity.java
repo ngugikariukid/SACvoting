@@ -28,8 +28,6 @@ public class SignupActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final String TAG = "SignupActivity";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +50,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                //finish();
             }
         });
 

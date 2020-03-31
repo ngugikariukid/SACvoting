@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 //import android.widget.Toolbar;
@@ -30,6 +33,7 @@ public class Join extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Join.this, SignupActivity.class));
+                //finish();
             }
         });
 
@@ -46,6 +50,7 @@ public class Join extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 startActivity(new Intent(Join.this, FingerprintActivity.class));
+                                //finish();
                             }
                         });
 
@@ -54,6 +59,7 @@ public class Join extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 startActivity(new Intent(Join.this, LoginActivity.class));
+                               // finish();
                             }
                         });
 
@@ -61,6 +67,24 @@ public class Join extends AppCompatActivity {
                 alert11.show();
             }
         });
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_album, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+//respond to menu item selection
+        switch (item.getItemId()) {
+            case R.id.about:
+                startActivity(new Intent(this, About.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
     }
 

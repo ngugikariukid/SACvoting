@@ -30,14 +30,12 @@
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
-    <string name="president">SAC President</string>
-    <string name="treasurer">SAC Treasurer</string>
-    <string name="sacsec">SAC Secretary</string>
-
-
+    <string name="president">Presidencial Results</string>
+    <string name="treasurer">Treasurer Results</string>
+    <string name="sacsec">Secretary Results</string>
 
     <string name="action_settings">Settings</string>
-    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_add_favourite">About</string>
     <string name="action_play_next">Play Next</string>
     <string name="backdrop_title">LOVE MUSIC</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
@@ -61,7 +59,7 @@
 
     <string name="title_activity_main">MainActivity</string>
     <string name="title_fingerprint">One-touch to Vote</string>
-    <string name="desc_fingerprint">Please place your fingertip on the scanner to verify your identity</string>
+    <string name="desc_fingerprint">System Engineer: Ngugi Kariuki</string>
     <string name="note">(Fingerprint sign in makes your voting much faster and safer. </string>
     <string name="title_activity_home">Fingerprint</string>
     <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
@@ -70,6 +68,20 @@
     <string name="dialog_fire_missiles">String</string>
     <string name="fire">fire</string>
     <string name="cancel">Cancel</string>
+    <string name="exec">Executive Committee</string>
+    <string name="schools">Non-Executive Committee</string>
+    <string name="science">School of Science</string>
+    <string name="business">School of Business</string>
+    <string name="addparty">Add Party</string>
+    <string name="partyname">Party Name</string>
+    <string name="partysch">School</string>
+    <string name="mem1">Party member 1</string>
+    <string name="mem2">Party Member 2</string>
+    <string name="mem3">Party Member 3</string>
+    <string name="sciencer">School of Science Rep</string>
+    <string name="businessr">School of Business Rep</string>
+    <string name="namee">SAC Biometric Voting System</string>
+    <string name="year">/@2020</string>
 
 
 </resources>

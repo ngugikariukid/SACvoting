@@ -76,30 +76,5 @@ public class SecretaryCandidates extends AppCompatActivity {
             }
         });
 
-//        reference.addValueEventListener(new ValueEventListener() {
-//            //String userId = mDatabase.push().getKey();
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//
-//                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-//                    Candidate p = dataSnapshot1.getValue(Candidate.class);
-//
-//                    list.add(p);
-//                }
-//
-//                adapter = new MyAdapter(AllCandidates.this, list);
-//                recyclerView.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(AllCandidates.this, "Ooops, something went wrong!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-
     };
 }

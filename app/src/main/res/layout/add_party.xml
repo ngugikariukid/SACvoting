@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.voters.AddCandidate">
+    tools:context="com.example.voters.Party">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -27,10 +27,10 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/partyname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
+                android:hint="@string/partyname"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -44,10 +44,10 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/firstname"
+                android:id="@+id/schoolname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/firstname"
+                android:hint="@string/partysch"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -60,11 +60,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/lastname"
+                android:id="@+id/member1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
-                android:hint="@string/lastname"
+                android:hint="@string/mem1"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
@@ -78,11 +78,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/party"
+                android:id="@+id/member2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
-                android:hint="@string/party"
+                android:hint="@string/mem2"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
@@ -96,11 +96,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/category"
+                android:id="@+id/member3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
-                android:hint="@string/category"
+                android:hint="@string/mem3"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
@@ -117,34 +117,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btnChoose"
-                android:text="Choose"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
 
-<!--            <Button-->
-<!--                android:id="@+id/btnUpload"-->
-<!--                android:text="Upload"-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content" />-->
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imgView"
-            android:layout_width="match_parent"
-            android:layout_height="121dp" />
+
 
         <Button
-            android:id="@+id/btn_addCandidate"
+            android:id="@+id/btn_addparty"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorAccent"
-            android:text="@string/addCandidate"
+            android:text="@string/addparty"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
@@ -158,7 +143,6 @@
             android:textColor="@color/colorAccent" />
 
         <!-- Link to Login Screen -->
-
 
     </LinearLayout>
 

@@ -15,7 +15,7 @@ public class ViewVotes extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
-    private Button president, treasurer, secretary, back;
+    private Button president, treasurer, secretary, science, business, back;
     private FirebaseAuth.AuthStateListener authListener;
 
     @Override
@@ -26,6 +26,8 @@ public class ViewVotes extends AppCompatActivity {
         president = (Button) findViewById(R.id.presidentresults);
         treasurer = (Button) findViewById(R.id.treasurerresults);
         secretary = (Button) findViewById(R.id.secretaryresults);
+        science = (Button) findViewById(R.id.science);
+        business = (Button) findViewById(R.id.business);
         back = (Button) findViewById(R.id.btn_back);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,7 @@ public class ViewVotes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ViewVotes.this, PresidentResults.class));
+                //finish();
             }
         });
 
@@ -46,14 +49,32 @@ public class ViewVotes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ViewVotes.this, SecretaryResults.class));
+                //finish();
             }
         });
         treasurer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AllCandidates a = new AllCandidates();
-
+//                AllCandidates a = new AllCandidates();
                 startActivity(new Intent(ViewVotes.this, TreasurerResults.class));
+               // finish();
+            }
+        });
+
+        business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                AllCandidates a = new AllCandidates();
+                startActivity(new Intent(ViewVotes.this, BusinessResults.class));
+                // finish();
+            }
+        });
+        science.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                AllCandidates a = new AllCandidates();
+                startActivity(new Intent(ViewVotes.this, ScienceResults.class));
+                // finish();
             }
         });
     }

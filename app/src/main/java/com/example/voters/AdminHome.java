@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class AdminHome extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
-    private Button addCandidate, vviewvotes, btnBack;
+    private Button addCandidate, vviewvotes, btnBack, btnParty;
     private FirebaseAuth.AuthStateListener authListener;
 
     @Override
@@ -26,7 +26,7 @@ public class AdminHome extends AppCompatActivity {
         addCandidate = (Button) findViewById(R.id.btn_addsCandidate);
         vviewvotes = (Button) findViewById(R.id.viewvotes);
         btnBack = (Button) findViewById(R.id.btn_back);
-
+        btnParty = (Button) findViewById(R.id.btn_party);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,12 +38,20 @@ public class AdminHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminHome.this, AddCandidate.class));
+                //finish();
             }
         });
         vviewvotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminHome.this, ViewVotes.class));
+                //finish();
+            }
+        });
+        btnParty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminHome.this, Party.class));
             }
         });
     }

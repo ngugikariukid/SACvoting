@@ -109,7 +109,50 @@
             android:name="com.example.voters.HomeActivity"
             android:label="@string/validate"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name="com.example.voters.Parties"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.Party"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.Schools"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.BusinessCandidates"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.BusinessAdapter"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.Redirect"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.ScienceCandidates"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.ScienceAdapter"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.BusinessResults"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.ScienceResults"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.About"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

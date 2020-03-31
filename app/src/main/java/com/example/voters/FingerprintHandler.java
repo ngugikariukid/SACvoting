@@ -48,8 +48,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         ((Activity) context).finish();
-        Intent intent = new Intent(context, HomeActivity.class);
+        Intent intent = new Intent(context, Home.class);
         context.startActivity(intent);
+
     }
 
     private void update(String e){

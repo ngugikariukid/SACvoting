@@ -14,6 +14,4 @@ public class VotesCategory {
     }
 
     private String voterId;
-
-
 }

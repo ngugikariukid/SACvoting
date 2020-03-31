@@ -6,11 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,18 +17,16 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class TreasurerCandidates extends AppCompatActivity {
+public class ScienceCandidates extends AppCompatActivity {
 
     private DatabaseReference reference;
     private RecyclerView recyclerView;
-    private ArrayList<Candidate> list;
-    private ArrayList<CandidateIMage> listimage;
-    private MyAdapter adapter;
-    private DatabaseReference imagereference;
+    private ArrayList<Parties> list;
+    private BusinessAdapter adapter;
     FirebaseStorage storage;
     StorageReference storageReference;
 
-    private static final String TAG = "AllCandidates";
+    private static final String TAG = "ScienceCandidates";
 
 
     @Override
@@ -41,36 +34,30 @@ public class TreasurerCandidates extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_candidates);
 
-
         recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<Candidate>();
-        listimage = new ArrayList<CandidateIMage>();
+        list = new ArrayList<Parties>();
 
         reference = FirebaseDatabase.getInstance().getReference();
 
-        Query treasurerquery = reference.child("candidates").orderByChild("category").equalTo("Treasurer");
-        treasurerquery.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query presidentquery = reference.child("paries").orderByChild("school").equalTo("School of Science");
+        presidentquery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        Candidate p = dataSnapshot1.getValue(Candidate.class);
+                        Parties p = dataSnapshot1.getValue(Parties.class);
+                        //String userId = dataSnapshot1.getKey();
                         list.add(p);
                     }
-                    adapter = new MyAdapter(TreasurerCandidates.this, list);
+                    adapter = new BusinessAdapter(ScienceCandidates.this, list);
                     recyclerView.setAdapter(adapter);
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-
     };
 }

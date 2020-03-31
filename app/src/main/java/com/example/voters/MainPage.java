@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -30,6 +29,7 @@ public class MainPage extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MainPage.this, Redirect.class));
                 finish();
             }
         });
@@ -37,15 +37,16 @@ public class MainPage extends AppCompatActivity {
         vote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainPage.this, Home.class));
+                startActivity(new Intent(MainPage.this, Redirect.class));
+                //finish();
             }
         });
         vviewvotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainPage.this, ViewVotes.class));
+                //finish();
             }
         });
     }
-
 }

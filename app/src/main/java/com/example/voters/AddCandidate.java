@@ -17,26 +17,18 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import androidx.appcompat.app.ActionBar;
-
 import android.widget.ImageView;
 
 import java.io.IOException;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-//import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import android.widget.EditText;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class AddCandidate extends AppCompatActivity {
 
@@ -53,32 +45,21 @@ public class AddCandidate extends AppCompatActivity {
     // Creating URI.
     private Uri FilePathUri;
     private ProgressDialog progressDialog ;
-
     StorageReference storageReference;
     DatabaseReference databaseReference;
-
-
-
     int Image_Request_Code = 7;
 
     private static final String TAG = "AddCandidates";
 
-
     private Button btnChoose;
     private ImageView imageView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_candidate);
-
-
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
-
-
         btn_addCandidate = (Button) findViewById(R.id.btn_addCandidate);
         btn_back = (Button) findViewById(R.id.btn_back);
         btnChoose = (Button) findViewById(R.id.btnChoose);
@@ -92,7 +73,6 @@ public class AddCandidate extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         // Assigning Id to ProgressDialog.
         progressDialog = new ProgressDialog(AddCandidate.this);
-
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +91,6 @@ public class AddCandidate extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
-
             }
         });
 
@@ -121,24 +100,13 @@ public class AddCandidate extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 //                //create user
-//                InsertCandidate(eemail,fname,lname,pparty,cat,initVotes);
-
                 UploadImageFileToFirebaseStorage();
 
                     startActivity(new Intent(AddCandidate.this, AdminHome.class));
+                    //finish();
             }
         });
-
     }
-
-
-//    private void InsertCandidate(String CandidateEmail, String firstname, String lastname, String party, String category, Integer totalVotes) {
-//        String userId = mDatabase.push().getKey();
-//        Candidate newCandidate = new Candidate(CandidateEmail, firstname,lastname, party, category, totalVotes);
-//        mDatabase.child(userId).setValue(newCandidate);
-//        uploadImage(userId);
-//        Toast.makeText(getApplicationContext(), "Candidate added!", Toast.LENGTH_SHORT).show();
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -241,8 +209,6 @@ public class AddCandidate extends AppCompatActivity {
 
                             @SuppressWarnings("VisibleForTests")
                               Candidate candidate = new Candidate(TempImageName, eemail, fname,lname, pparty, cat, initVotes );
-
-
 
                             //ImageUploadInfo imageUploadInfo = new ImageUploadInfo(TempImageName, taskSnapshot.getDownloadUrl().toString());
 

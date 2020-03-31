@@ -60,7 +60,7 @@ public class Home extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             startActivity(new Intent(Home.this, AllCandidates.class));
-                            finish();
+                            //finish();
                         }
                     });
                 }
@@ -79,12 +79,11 @@ public class Home extends AppCompatActivity {
                     secretary.setText("Secretary: Voted Already");
                 }
                 else{
-
                     secretary.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             startActivity(new Intent(Home.this, SecretaryCandidates.class));
-                            finish();
+                            //finish();
                         }
                     });
                 }
@@ -109,7 +108,7 @@ public class Home extends AppCompatActivity {
                             AllCandidates a = new AllCandidates();
 
                             startActivity(new Intent(Home.this, TreasurerCandidates.class));
-                            finish();
+                            //finish();
                         }
                     });
                 }

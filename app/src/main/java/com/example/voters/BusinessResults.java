@@ -22,55 +22,56 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class TreasurerCandidates extends AppCompatActivity {
+public class BusinessResults extends AppCompatActivity {
 
     private DatabaseReference reference;
     private RecyclerView recyclerView;
-    private ArrayList<Candidate> list;
-    private ArrayList<CandidateIMage> listimage;
-    private MyAdapter adapter;
-    private DatabaseReference imagereference;
+    private ArrayList<Parties> list;
+    private SchoolVotesAdapter adapter;
     FirebaseStorage storage;
     StorageReference storageReference;
 
-    private static final String TAG = "AllCandidates";
+    private static final String TAG = "BusinessResults";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_candidates);
+        setContentView(R.layout.resultsrecycler);
+
+        //reference= FirebaseDatabase.getInstance().getReference().child("candidates");
+        recyclerView = (RecyclerView) findViewById(R.id.resultsrecycler);
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        //linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<Candidate>();
-        listimage = new ArrayList<CandidateIMage>();
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        list = new ArrayList<Parties>();
 
         reference = FirebaseDatabase.getInstance().getReference();
 
-        Query treasurerquery = reference.child("candidates").orderByChild("category").equalTo("Treasurer");
-        treasurerquery.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query presidentquery = reference.child("paries").orderByChild("school").equalTo("School of Business");
+        presidentquery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        Candidate p = dataSnapshot1.getValue(Candidate.class);
+                        Parties p = dataSnapshot1.getValue(Parties.class);
+                        String userId = dataSnapshot1.getKey();
                         list.add(p);
                     }
-                    adapter = new MyAdapter(TreasurerCandidates.this, list);
+                    adapter = new SchoolVotesAdapter(BusinessResults.this, list);
                     recyclerView.setAdapter(adapter);
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-
     };
 }
+
