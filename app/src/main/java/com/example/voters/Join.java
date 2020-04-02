@@ -70,22 +70,4 @@ public class Join extends AppCompatActivity {
 
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_album, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-//respond to menu item selection
-        switch (item.getItemId()) {
-            case R.id.about:
-                startActivity(new Intent(this, About.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
-
 }

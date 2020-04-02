@@ -9,6 +9,7 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
@@ -47,10 +48,12 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-        ((Activity) context).finish();
-        Intent intent = new Intent(context, Home.class);
-        context.startActivity(intent);
 
+        ((Activity) context).finish();
+        Toast.makeText(context.getApplicationContext(), "FingerPrint Login Successful!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(context, MainPage.class);
+        context.startActivity(intent);
     }
 
     private void update(String e){

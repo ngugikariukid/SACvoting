@@ -60,7 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.party.setText(candidates.get(position).getParty());
         holder.category.setText(candidates.get(position).getCategory());
 
-        Picasso.get().load(candidates.get(position).getImageurl()).into(holder.profilepic);
+        //Picasso.get().load(candidates.get(position).getImageurl()).into(holder.profilepic);
 
         holder.vote.setOnClickListener(new View.OnClickListener() {
             @Override

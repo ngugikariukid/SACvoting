@@ -106,7 +106,6 @@ public class Home extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             AllCandidates a = new AllCandidates();
-
                             startActivity(new Intent(Home.this, TreasurerCandidates.class));
                             //finish();
                         }

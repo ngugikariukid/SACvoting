@@ -65,7 +65,7 @@ public class FingerprintActivity extends AppCompatActivity {
              * startActivity(intent);
              */
             textView.setText("Your Device does not have a Fingerprint Sensor");
-            Intent intent = new Intent(this, LoginActivity.class);
+            //Intent intent = new Intent(this, LoginActivity.class);
             //finish();
 
         }else {
@@ -87,6 +87,9 @@ public class FingerprintActivity extends AppCompatActivity {
                             FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
                             FingerprintHandler helper = new FingerprintHandler(this);
                             helper.startAuth(fingerprintManager, cryptoObject);
+
+
+
                         }
                     }
                 }
@@ -142,6 +145,7 @@ public class FingerprintActivity extends AppCompatActivity {
                     null);
             cipher.init(Cipher.ENCRYPT_MODE, key);
             return true;
+
         } catch (KeyPermanentlyInvalidatedException e) {
             return false;
         } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
