@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Join extends AppCompatActivity {
     private Button login,register;
 
@@ -28,6 +30,7 @@ public class Join extends AppCompatActivity {
         setSupportActionBar(toolbar);
         login = (Button) findViewById(R.id.login);
         register = (Button) findViewById(R.id.register);
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,5 +72,4 @@ public class Join extends AppCompatActivity {
         });
 
     }
-
 }

@@ -153,6 +153,10 @@
             android:name="com.example.voters.About"
             android:label="@string/validate"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.voters.Reports"
+            android:label="@string/validate"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
