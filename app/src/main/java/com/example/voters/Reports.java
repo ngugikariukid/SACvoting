@@ -26,7 +26,7 @@ public class Reports extends AppCompatActivity {
     DatabaseReference reference;
     TextView tvoters, pres, sec, tres, bus, sci;
     Button publish;
-    public String highestpresident;
+    private String highestpresident;
 
 
     @Override
@@ -45,24 +45,22 @@ public class Reports extends AppCompatActivity {
         sci = (TextView) findViewById(R.id.sci);
         publish = (Button) findViewById(R.id.publish);
 
-        publish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //sendEmail();
-            }
-        });
-
         reference = FirebaseDatabase.getInstance().getReference();
+        System.out.println("Inside reports " );
 
 
-        DatabaseReference mDatabasePlayers = FirebaseDatabase.getInstance().getReference().child("voters");
-        Query mDatabaseHighestPlayer = mDatabasePlayers.child("candidates").orderByChild("totalVotes").limitToLast(1);
-        mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference candidatesRef = rootRef.child("candidates");
+        Query tatalVotesQuery = candidatesRef.orderByChild("tatalVotes").limitToLast(1);
+        tatalVotesQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    String highestpresident = childSnapshot.getKey();
-                    Toast.makeText(Reports.this,Key,Toast.LENGTH_LONG).show();
+
+                    String firstname = childSnapshot.child("firstname").getValue(String.class);
+                    String lastname = childSnapshot.child("lastname").getValue(String.class);
+                    pres.setText(firstname + " " + lastname);
+
                 }
             }
             @Override
@@ -72,38 +70,6 @@ public class Reports extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        Query presidentquery = reference.child("candidates");
-        presidentquery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        System.out.println("Total candidates: "+ Log.e(dataSnapshot1.getKey(),dataSnapshot1.getChildrenCount() + ""));
-
-                        String totalcandidates = dataSnapshot1.getChildrenCount() + "";
-                        Candidate p = dataSnapshot1.getValue(Candidate.class);
-                        System.out.println("datasnapshot returns: " + dataSnapshot1.getChildren().equals("President"));
-                        String userId = dataSnapshot1.getKey();
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
     }
 
     protected void sendEmail(String [] email) {
