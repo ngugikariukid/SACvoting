@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,17 +24,66 @@ public class Reports extends AppCompatActivity {
     private String totalVoters;
     private String totalCandidates;
     DatabaseReference reference;
+    TextView tvoters, pres, sec, tres, bus, sci;
+    Button publish;
+    public String highestpresident;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //setContentView(R.layout.activity_fhome);
+        setContentView(R.layout.reports);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        tvoters = (TextView) findViewById(R.id.tvoters);
+        pres = (TextView) findViewById(R.id.pres);
+        sec = (TextView) findViewById(R.id.sec);
+        tres = (TextView) findViewById(R.id.tres);
+        bus = (TextView) findViewById(R.id.bus);
+        sci = (TextView) findViewById(R.id.sci);
+        publish = (Button) findViewById(R.id.publish);
+
+        publish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //sendEmail();
+            }
+        });
+
         reference = FirebaseDatabase.getInstance().getReference();
+
+
+        DatabaseReference mDatabasePlayers = FirebaseDatabase.getInstance().getReference().child("voters");
+        Query mDatabaseHighestPlayer = mDatabasePlayers.child("candidates").orderByChild("totalVotes").limitToLast(1);
+        mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot){
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    String highestpresident = childSnapshot.getKey();
+                    Toast.makeText(Reports.this,Key,Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException(); // don't swallow errors
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         Query presidentquery = reference.child("candidates");
         presidentquery.addListenerForSingleValueEvent(new ValueEventListener() {

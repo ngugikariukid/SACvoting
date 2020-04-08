@@ -93,6 +93,10 @@
     <string name="sacsech">SAC Secretary</string>
     <string name="presidenth">SAC President</string>
     <string name="reports">Reports</string>
+    <string name="heading">SAC Voting Report - 2020</string>
+    <string name="totalvoters">Voters Registered:</string>
+    <string name="winners">WINNERS</string>
+    <string name="publish">PUBLISH</string>
 
 
 </resources>

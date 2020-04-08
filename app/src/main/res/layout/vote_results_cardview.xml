@@ -25,7 +25,7 @@
         <ImageView
             android:id="@+id/profilepic"
             android:layout_width="186dp"
-            android:layout_height="169dp"
+            android:layout_height="77dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
             android:src="@drawable/logo" />
