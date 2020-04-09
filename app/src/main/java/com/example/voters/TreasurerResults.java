@@ -42,8 +42,9 @@ public class TreasurerResults extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.resultsrecycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
         linearLayoutManager.setReverseLayout(true);
-        //linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));

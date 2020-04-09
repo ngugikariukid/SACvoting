@@ -13,5 +13,4 @@
         android:id="@+id/myRecycler">
     </androidx.recyclerview.widget.RecyclerView>
 
-
 </LinearLayout>

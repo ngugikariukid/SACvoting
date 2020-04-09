@@ -38,6 +38,7 @@ public class AllCandidates extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         list = new ArrayList<Candidate>();
 
         reference = FirebaseDatabase.getInstance().getReference();

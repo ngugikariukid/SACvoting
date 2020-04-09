@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SACvoting.iml" filepath="$PROJECT_DIR$/SACvoting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/SACvoting-app.iml" filepath="$PROJECT_DIR$/app/SACvoting-app.iml" group="SACvoting/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newf-SACvoting.iml" filepath="$PROJECT_DIR$/newf-SACvoting.iml" group="SACvoting" />
     </modules>
   </component>
 </project>
